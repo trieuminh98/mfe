@@ -7,7 +7,7 @@ on: #designate event will be trigger
     paths:
       - "packages/container/**" #watching changes on this path
 
-default:
+defaults:
   run:
     working-directory: packages/container
 
