@@ -11,7 +11,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath } = {}) => {
     });
 
   if (onNavigate) {
-    history.listen((e) => onNavigate(e, "marketing"));
+    history.listen((e) => onNavigate(e, "auth"));
   }
 
   ReactDom.render(<App {...{ history }} />, el);
@@ -20,7 +20,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath } = {}) => {
       const curPathname = history.pathname;
       if (curPathname !== nextPathname) {
         history.push(nextPathname);
-        console.log("Marketing is updated browser navigate based on container");
+        console.log("Auth is updated browser navigate based on container");
       }
     },
   };
@@ -29,11 +29,11 @@ const mount = (el, { onNavigate, defaultHistory, initialPath } = {}) => {
 //Context/Situation #1
 //We are running this file in development in isolation
 //We are using our local index.html file
-//Which DEFINITYLY has the element with an id of '_marketing-dev-root'
+//Which DEFINITYLY has the element with an id of '_auth-dev-root'
 //We want to immediately render our app into the elements
 if (process.env.NODE_ENV === "development") {
-  //Assuming our app doesn't have element with id _marketing-dev-root
-  const el = document.querySelector("#_marketing-dev-root");
+  //Assuming our app doesn't have element with id _auth-dev-root
+  const el = document.querySelector("#_auth-dev-root");
   if (el) {
     //We are probably running in isolation
     mount(el, { defaultHistory: createBrowserHistory() }); // create browser history for dev mode
@@ -43,6 +43,6 @@ if (process.env.NODE_ENV === "development") {
 //Context/Sitatuon #2
 //We are running this file in development or production
 //Through the CONTAINER app
-//NO GUARUANTEE that elements have id '_marketing-dev-root'
+//NO GUARUANTEE that elements have id '_auth-dev-root'
 //WE DO NOT WANT TRY to immediately render the app
 export { mount };

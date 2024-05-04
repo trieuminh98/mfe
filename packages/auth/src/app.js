@@ -5,12 +5,11 @@ import {
   createGenerateClassName,
 } from "@material-ui/core/styles";
 import { Route, Router, Switch } from "react-router-dom";
-import Landing from "./components/Landing";
-import Pricing from "./components/Pricing";
-//Testing
+import SignIn from "../components/Signin";
+import SignUp from "../components/Signup";
 
 const generationClassName = createGenerateClassName({
-  productionPrefix: "ma",
+  productionPrefix: "au",
 });
 
 export default ({ history }) => {
@@ -19,8 +18,8 @@ export default ({ history }) => {
       <StylesProvider generateClassName={generationClassName}>
         <Router history={history}>
           <Switch>
-            <Route exact path="/pricing" component={Pricing} />
-            <Route path="/" component={Landing} />
+            <Route path="/auth/signin" component={SignIn} />
+            <Route path="/auth/signup" component={SignUp} />
           </Switch>
         </Router>
       </StylesProvider>
